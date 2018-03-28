@@ -4,7 +4,7 @@
 #
 Name     : libsass
 Version  : 3.5.2
-Release  : 2
+Release  : 5
 URL      : https://github.com/sass/libsass/archive/3.5.2.tar.gz
 Source0  : https://github.com/sass/libsass/archive/3.5.2.tar.gz
 Summary  : A C/C++ implementation of a Sass compiler
@@ -15,6 +15,15 @@ Patch1: build.patch
 %description
 LibSass is a C/C++ port of the Sass engine. The point is to be simple, fast, and easy to integrate.
 
+%package dev
+Summary: dev components for the libsass package.
+Group: Development
+Provides: libsass-devel
+
+%description dev
+dev components for the libsass package.
+
+
 %prep
 %setup -q -n libsass-3.5.2
 %patch1 -p1
@@ -24,13 +33,27 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522195794
+export SOURCE_DATE_EPOCH=1522196043
 make  %{?_smp_mflags} BUILD=shared
 
 %install
-export SOURCE_DATE_EPOCH=1522195794
+export SOURCE_DATE_EPOCH=1522196043
 rm -rf %{buildroot}
 %make_install
+## make_install_append content
+%make_install BUILD=shared
+mv %{buildroot}/usr/lib %{buildroot}/usr/lib64
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
+
+%files dev
+%defattr(-,root,root,-)
+/usr/include/*.h
+/usr/include/sass/base.h
+/usr/include/sass/context.h
+/usr/include/sass/functions.h
+/usr/include/sass/values.h
+/usr/include/sass/version.h
+/usr/lib64/libsass.so
