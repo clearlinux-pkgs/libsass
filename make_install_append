@@ -1,2 +1,0 @@
-%make_install BUILD=shared
-mv %{buildroot}/usr/lib %{buildroot}/usr/lib64
