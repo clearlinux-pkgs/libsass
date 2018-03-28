@@ -1,0 +1,22 @@
+--- libsass-3.5.2/Makefile~	2018-03-15 05:21:46.000000000 +0000
++++ libsass-3.5.2/Makefile	2018-03-28 00:05:45.729740042 +0000
+@@ -147,7 +147,7 @@
+ 	ifeq ($(OS),SunOS)
+ 		PREFIX ?= /opt/local
+ 	else
+-		PREFIX ?= /usr/local
++		PREFIX ?= /usr
+ 	endif
+ else
+ 	PREFIX ?= $(TRAVIS_BUILD_DIR)
+--- libsass-3.5.2/Makefile~	2018-03-28 00:05:45.000000000 +0000
++++ libsass-3.5.2/Makefile	2018-03-28 00:06:58.142716831 +0000
+@@ -3,7 +3,7 @@
+ CXX      ?= g++
+ RM       ?= rm -f
+ CP       ?= cp -a
+-MKDIR    ?= mkdir
++MKDIR    ?= mkdir -p
+ RMDIR    ?= rmdir
+ WINDRES  ?= windres
+ # Solaris/Illumos flavors
