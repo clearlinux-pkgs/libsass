@@ -4,7 +4,7 @@
 #
 Name     : libsass
 Version  : 3.5.4
-Release  : 7
+Release  : 8
 URL      : https://github.com/sass/libsass/archive/3.5.4.tar.gz
 Source0  : https://github.com/sass/libsass/archive/3.5.4.tar.gz
 Summary  : A C/C++ implementation of a Sass compiler
