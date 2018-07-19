@@ -4,7 +4,7 @@
 #
 Name     : libsass
 Version  : 3.5.4
-Release  : 9
+Release  : 10
 URL      : https://github.com/sass/libsass/archive/3.5.4.tar.gz
 Source0  : https://github.com/sass/libsass/archive/3.5.4.tar.gz
 Summary  : A C/C++ implementation of a Sass compiler
@@ -14,6 +14,7 @@ Requires: libsass-lib
 Requires: libsass-license
 Patch1: build.patch
 Patch2: cve-2018-11696.patch
+Patch3: cve-2018-11693.patch
 
 %description
 LibSass is a C/C++ port of the Sass engine. The point is to be simple, fast, and easy to integrate.
@@ -49,13 +50,14 @@ license components for the libsass package.
 %setup -q -n libsass-3.5.4
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1531954364
+export SOURCE_DATE_EPOCH=1532036046
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -64,7 +66,7 @@ export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=use
 make  %{?_smp_mflags} BUILD=shared
 
 %install
-export SOURCE_DATE_EPOCH=1531954364
+export SOURCE_DATE_EPOCH=1532036046
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/libsass
 cp LICENSE %{buildroot}/usr/share/doc/libsass/LICENSE
