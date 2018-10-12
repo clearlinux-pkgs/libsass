@@ -4,19 +4,20 @@
 #
 Name     : libsass
 Version  : 3.5.4
-Release  : 12
+Release  : 13
 URL      : https://github.com/sass/libsass/archive/3.5.4.tar.gz
 Source0  : https://github.com/sass/libsass/archive/3.5.4.tar.gz
 Summary  : A C/C++ implementation of a Sass compiler
 Group    : Development/Tools
 License  : MIT
-Requires: libsass-lib
-Requires: libsass-license
+Requires: libsass-lib = %{version}-%{release}
+Requires: libsass-license = %{version}-%{release}
 Patch1: build.patch
 Patch2: cve-2018-11696.patch
 Patch3: cve-2018-11693.patch
 Patch4: cve-2018-11697.patch
 Patch5: cve-2018-11698.patch
+Patch6: CVE-2018-11499.patch
 
 %description
 LibSass is a C/C++ port of the Sass engine. The point is to be simple, fast, and easy to integrate.
@@ -24,8 +25,8 @@ LibSass is a C/C++ port of the Sass engine. The point is to be simple, fast, and
 %package dev
 Summary: dev components for the libsass package.
 Group: Development
-Requires: libsass-lib
-Provides: libsass-devel
+Requires: libsass-lib = %{version}-%{release}
+Provides: libsass-devel = %{version}-%{release}
 
 %description dev
 dev components for the libsass package.
@@ -34,7 +35,7 @@ dev components for the libsass package.
 %package lib
 Summary: lib components for the libsass package.
 Group: Libraries
-Requires: libsass-license
+Requires: libsass-license = %{version}-%{release}
 
 %description lib
 lib components for the libsass package.
@@ -55,13 +56,14 @@ license components for the libsass package.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532036714
+export SOURCE_DATE_EPOCH=1539382839
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -70,11 +72,11 @@ export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=use
 make  %{?_smp_mflags} BUILD=shared
 
 %install
-export SOURCE_DATE_EPOCH=1532036714
+export SOURCE_DATE_EPOCH=1539382839
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/libsass
-cp LICENSE %{buildroot}/usr/share/doc/libsass/LICENSE
-cp COPYING %{buildroot}/usr/share/doc/libsass/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/libsass
+cp COPYING %{buildroot}/usr/share/package-licenses/libsass/COPYING
+cp LICENSE %{buildroot}/usr/share/package-licenses/libsass/LICENSE
 %make_install
 
 %files
@@ -97,6 +99,6 @@ cp COPYING %{buildroot}/usr/share/doc/libsass/COPYING
 /usr/lib64/libsass.so.1.0.0
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/libsass/COPYING
-/usr/share/doc/libsass/LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/libsass/COPYING
+/usr/share/package-licenses/libsass/LICENSE
