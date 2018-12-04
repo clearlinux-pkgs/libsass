@@ -1,6 +1,4 @@
 build.patch
-#cve-2018-11696.patch
-#cve-2018-11693.patch
-#cve-2018-11697.patch
-#cve-2018-11698.patch
-#0001-Mitigation-for-CVE-2018-11694-CVE-2018-11499.patch
+cve-2018-11697.patch
+0001-Mitigation-for-CVE-2018-11694-CVE-2018-11499.patch
+CVE-2018-19827.patch
