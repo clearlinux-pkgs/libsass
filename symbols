@@ -618,7 +618,10 @@ libsass.so.1:_ZN4Sass6CssizeclEPNS_5TraceE
 libsass.so.1:_ZN4Sass6CssizeclEPNS_7RulesetE
 libsass.so.1:_ZN4Sass6CssizeclEPNS_9DirectiveE
 libsass.so.1:_ZN4Sass6Expand11environmentEv
+libsass.so.1:_ZN4Sass6Expand15popNullSelectorEv
+libsass.so.1:_ZN4Sass6Expand16getOriginalStackEv
 libsass.so.1:_ZN4Sass6Expand16getSelectorStackEv
+libsass.so.1:_ZN4Sass6Expand16pushNullSelectorEv
 libsass.so.1:_ZN4Sass6Expand17mergeMediaQueriesERKSt6vectorINS_10SharedImplINS_13CssMediaQueryEEESaIS4_EES8_
 libsass.so.1:_ZN4Sass6Expand19pushToOriginalStackENS_10SharedImplINS_12SelectorListEEE
 libsass.so.1:_ZN4Sass6Expand19pushToSelectorStackENS_10SharedImplINS_12SelectorListEEE
@@ -1838,6 +1841,7 @@ libsass.so.1:sass_context_get_source_map_string
 libsass.so.1:sass_context_take_error_file
 libsass.so.1:sass_context_take_error_json
 libsass.so.1:sass_context_take_error_message
+libsass.so.1:sass_context_take_error_src
 libsass.so.1:sass_context_take_error_text
 libsass.so.1:sass_context_take_included_files
 libsass.so.1:sass_context_take_output_string
